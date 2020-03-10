@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 指定数据库驱动的jdbc驱动jar包的位置   -->
+    <classPathEntry location="D:\repository\mysql\mysql-connector-java\5.1.36\mysql-connector-java-5.1.36.jar" />
+
+    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple" >
+        <!-- 生成的 Java 文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 Java 代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- 自定义注释生成器 -->
+        <commentGenerator type="mybatis_generator.MySQLCommentGenerator">
+            <property name="author" value="Michael Chow"/>
+            <property name="dateFormat" value="yyyy/MM/dd"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://rm-m5e66f1g068ga90kgto.mysql.rds.aliyuncs.com:3306/sz_server_special_equipment" userId="dev_cd" password="Dev_CD123!@#">
+            <!-- 设置 useInformationSchema 属性为 true -->
+            <property name="useInformationSchema" value="true" />
+        </jdbcConnection>
+
+        <!-- 生成实体的位置 -->
+        <javaModelGenerator targetPackage="src.model" targetProject="E:">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成 Mapper 接口的位置 -->
+        <sqlMapGenerator targetPackage="src.mapper" targetProject="E:">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成 Mapper XML 的位置 -->
+        <javaClientGenerator targetPackage="src.dao" type="XMLMAPPER" targetProject="E:">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 设置数据库的表名和实体类名 -->
+        <table tableName="equipment_checkout" domainObjectName="EquipmentCheckout">
+        </table>
+
+    </context>
+
+</generatorConfiguration>
